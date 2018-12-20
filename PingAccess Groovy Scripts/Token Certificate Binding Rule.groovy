@@ -3,11 +3,11 @@ exc?.log.info "*** TokenCertificateBinding start"
 exc?.log.info "TokenCertificateBinding Mutual TLS Certificate Bound Access Token Groovy Rule"
 if (exc?.response == null) // only do this when processing the inbound request and not after the site has been called
 {
-  exc?.log.info "TokenCertificateBinding ssl data and response null (IF:1)"
+  exc?.log.info "TokenCertificateBinding in request flow (IF:1)"
   if (exc?.sslData != null) {
-    exc?.log.info "TokenCertificateBinding ssl data and response null (IF:1.1)"
+    exc?.log.info "TokenCertificateBinding ssl data not null (IF:1.1)"
   def x5t = exc?.identity?.attributes?.get("cnf")?.get("x5t#S256")?.asText()
-  def sub = exc?.identity?.attributes?.get("uid")?.asText()
+  def sub = exc?.identity?.attributes?.get("sub")?.asText()
   def client_id = exc?.identity?.attributes?.get("client_id")?.asText()
     
     exc?.log.info x5t;
